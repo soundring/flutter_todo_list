@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_app/model/todo_data.dart';
+import 'package:todo_app/model/todo_model.dart';
 
 class CreateTodo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String newTodoData;
+    int isDone = 0;
+    final TodoData _todoData = TodoData();
 
     return Container(
       padding: EdgeInsets.all(20),
@@ -38,8 +41,8 @@ class CreateTodo extends StatelessWidget {
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10.0)),
             onPressed: () {
-              Provider.of<TodoData>(context, listen: false)
-                  .addTodo(newTodoData, DateTime.now());
+              _todoData.addTodo(newTodoData, DateTime.now(), isDone);
+
               Navigator.pop(context);
             },
           )

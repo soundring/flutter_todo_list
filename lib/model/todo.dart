@@ -1,11 +1,11 @@
 class Todo {
+  int id;
   String todoName;
-  DateTime date;
-  bool isDone;
+  int isDone;
 
-  Todo({this.todoName, this.date, this.isDone = false});
+  Todo({this.id, this.todoName, this.isDone = 0});
 
   void toggle() {
-    isDone = !isDone;
+    isDone = isDone == 0 ? 1 : 0;
   }
 }

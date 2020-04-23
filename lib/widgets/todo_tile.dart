@@ -29,7 +29,6 @@ class TodoTile extends StatelessWidget {
           style: TextStyle(
               decoration: isChecked ? TextDecoration.lineThrough : null),
         ),
-        subtitle: Text(DateFormat.yMMMMEEEEd().format(date)),
         trailing: Checkbox(
           activeColor: Colors.orangeAccent,
           value: isChecked,
