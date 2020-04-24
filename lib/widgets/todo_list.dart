@@ -19,10 +19,11 @@ class TodoList extends StatelessWidget {
                   final todo = snapshot.data[index];
 
                   return TodoTile(
-                    todoTitle: todo.todoName,
+                    id: todo.id,
+                    todoContent: todo.todoName,
                     isChecked: todo.isDone == 0 ? false : true,
                     checkboxCallback: (checkboxState) {
-                      todoData.updateTodo(todo);
+                      todoData.updateCheckbox(todo);
                     },
                     longPressCallback: () {
                       todoData.deleteTodo(todo);

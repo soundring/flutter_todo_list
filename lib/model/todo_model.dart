@@ -74,9 +74,16 @@ class TodoHelper {
     return dbClient.delete(TableName, where: '$ID = ?', whereArgs: [id]);
   }
 
-  Future<int> update(TodoModel todo) async {
+  Future<int> checkboxUpdate(TodoModel todo) async {
     var dbClient = await db;
-    return await dbClient.update(TableName, todo.toMap(),
+    return await dbClient.update(TableName, {'isDone': todo.isDone},
+        where: '$ID = ?', whereArgs: [todo.id]);
+  }
+
+  Future<int> todoTextUpdate(TodoModel todo) async {
+    var dbClient = await db;
+    return await dbClient.update(
+        TableName, {'id': todo.id, 'todo': todo.todoName},
         where: '$ID = ?', whereArgs: [todo.id]);
   }
 

@@ -29,12 +29,19 @@ class TodoData with ChangeNotifier {
     notifyListeners();
   }
 
-  void updateTodo(Todo todo) {
+  void updateCheckbox(Todo todo) {
     todo.toggle();
     TodoModel updateTodoModel =
         TodoModel(id: todo.id, todoName: todo.todoName, isDone: todo.isDone);
 
-    _todoHelper.update(updateTodoModel);
+    _todoHelper.checkboxUpdate(updateTodoModel);
+    notifyListeners();
+  }
+
+  void updateTodoText(Todo todo) {
+    TodoModel updateTodoModel = TodoModel(id: todo.id, todoName: todo.todoName);
+
+    _todoHelper.todoTextUpdate(updateTodoModel);
     notifyListeners();
   }
 
