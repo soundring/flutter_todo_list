@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import 'package:todo_app/screen/update_todo_screen.dart';
-import 'package:todo_app/widgets/update_todo.dart';
 
 class TodoTile extends StatelessWidget {
   final int id;
