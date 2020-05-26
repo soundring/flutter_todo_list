@@ -15,19 +15,30 @@ class _TodoListScreenState extends State<TodoListScreen> {
   }
 
   void initLinkData() async {
-    var link = await FirebaseDynamicLinks.instance.getInitialLink();
-    handleLinkData(link);
+    final PendingDynamicLinkData data =
+        await FirebaseDynamicLinks.instance.getInitialLink();
+
+    if (data != null) {
+      handleLinkData(data);
+    }
 
     FirebaseDynamicLinks.instance.onLink(
         onSuccess: (PendingDynamicLinkData dynamicLink) async {
       handleLinkData(dynamicLink);
+    }, onError: (OnLinkErrorException e) async {
+      print("エラー");
+      print(e.message);
     });
   }
 
   void handleLinkData(PendingDynamicLinkData data) {
     final Uri uri = data?.link;
-    print(uri.queryParameters["path"]);
-    Navigator.pushNamed(context, uri.queryParameters["path"]);
+    print(uri.queryParameters);
+    print(uri.queryParameters.length);
+    if (uri.queryParameters.length != 0) {
+      print('条件突破');
+      Navigator.pushNamed(context, uri.queryParameters["path"]);
+    }
   }
 
   @override

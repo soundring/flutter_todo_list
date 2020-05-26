@@ -5,6 +5,8 @@
 	<key>com.apple.developer.associated-domains</key>
 	<array>
 		<string>applinks:otonaritodo.page.link/dynamic_link</string>
+		<string>applinks:otonari-todo-app.haw-mana.com</string>
+		<string>applinks:otonaritodo.page.link</string>
 	</array>
 </dict>
 </plist>
